@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Word Counter Tool</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+        body { background: #f4f7f6; color: #333; line-height: 1.6; }
+        header, footer { background: #2563eb; color: white; text-align: center; padding: 1rem; }
+        header h1 { margin-bottom: 0.5rem; }
+        .container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+        textarea { 
+            width: 100%; height: 200px; padding: 1rem; 
+            border: 2px solid #cbd5e1; border-radius: 8px; 
+            font-size: 1rem; resize: vertical; outline: none; 
+        }
+        textarea:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.2); }
+        .stats { display: flex; gap: 1rem; margin: 1rem 0; flex-wrap: wrap; }
+        .stat-box { 
+            background: white; padding: 1rem; border-radius: 8px; 
+            flex: 1; min-width: 120px; text-align: center; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        }
+        .stat-box span { font-size: 2rem; font-weight: bold; color: #2563eb; display: block; }
+        
+        /* Ad Slot Styling */
+        .ad-slot { 
+            background: #e2e8f0; border: 2px dashed #94a3b8; 
+            margin: 1.5rem auto; padding: 1rem; text-align: center; 
+            border-radius: 8px; min-height: 90px; 
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .ad-slot:hover { 
+            border-color: #2563eb; 
+            background: #dbeafe;
+            box-shadow: 0 4px 12px rgba(37,99,235,0.15);
+        }
+        .ad-slot::after {
+            content: "ADVERTISEMENT";
+            position: absolute;
+            top: 5px;
+            right: 8px;
+            font-size: 10px;
+            color: #94a3b8;
+            font-weight: 600;
+            letter-spacing: 0.5px;        }
+        .ad-content {
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+        }
+        .ad-content:hover {
+            text-decoration: underline;
+        }
+        
+        /* Continue Button Styling - MORE SENSITIVE */
+        .continue-action-btn {
+            display: block;
+            margin: 25px auto;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(108,92,231,0.4);
+            transition: all 0.2s ease;
+            position: relative;
+            z-index: 100;
+            min-width: 200px;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        .continue-action-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(108,92,231,0.6);
+            background: linear-gradient(135deg, #5b4cdb, #9182ff);
+        }
+        .continue-action-btn:active {
+            transform: translateY(-1px) scale(0.98);
+            box-shadow: 0 4px 15px rgba(108,92,231,0.5);
+        }
+        .continue-action-btn:focus {
+            outline: 3px solid rgba(108,92,231,0.5);
+            outline-offset: 3px;
+        }
+        /* Mobile optimization */
+        @media (max-width: 600px) {
+            .continue-action-btn {
+                padding: 18px 45px;                font-size: 20px;
+                min-width: 220px;
+                touch-action: manipulation;
+            }
+        }
+        
+        footer { margin-top: 2rem; font-size: 0.9rem; padding: 1rem 0; }
+        @media (max-width: 600px) { 
+            .stats { flex-direction: column; } 
+            textarea { height: 150px; } 
+        }
+    </style>
+    
+    <!-- Monetag/PropellerAds Direct Link Script -->
+    <script async="async" data-cfasync="false" src="//omg10.com/1/10844539/direct.js"></script>
+</head>
+<body>
+    <!-- 🔽 ADSTERRA POPUNDER AD 🔽 -->
+    <script src="https://pl29091632.profitablecpmratenetwork.com/e8/74/eb/e874eb182f0827a079dbd9a0ad05fdd8.js"></script>
+    <!-- 🔼 UPAR TAK 🔼 -->
+
+    <header>
+        <h1>📝 Free Word Counter</h1>
+        
+        <!-- 🔽 ADSTERRA NATIVE BANNER (HEADER) 🔽 -->
+        <div style="text-align:center; margin:10px 0; min-height:100px;">
+            <script async="async" data-cfasync="false" src="https://pl29091503.profitablecpmratenetwork.com/af6c1ca0d6e9af9b3aea84dd4e649747/invoke.js"></script>
+            <div id="container-af6c1ca0d6e9af9b3aea84dd4e649747"></div>
+        </div>
+        <!-- 🔼 UPAR TAK 🔼 -->
+        
+        <!-- AD SLOT 1: HEADER (Monetag Direct Link) -->
+        <div class="ad-slot" onclick="window.open('https://omg10.com/4/10844539', '_blank')">
+            <a href="https://omg10.com/4/10844539" target="_blank" rel="noopener noreferrer" class="ad-content" onclick="event.stopPropagation()">
+                🔥 Sponsored Link - Click Here
+            </a>
+            <p style="color:#777; font-size:12px; margin-top:8px;">Ad Space (728x90)</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
+            
+            <div class="stats">
+                <div class="stat-box">
+                    <span id="wordCount">0</span>
+                    <p>Words</p>
+                </div>
+                <div class="stat-box">                    <span id="charCount">0</span>
+                    <p>Characters</p>
+                </div>
+            </div>
+
+            <!-- 🔽 CONTINUE BUTTON (Improved - More Sensitive) 🔽 -->
+            <button id="continueActionBtn" class="continue-action-btn" type="button">
+                ✅ Continue
+            </button>
+            <!-- 🔼 UPAR TAK 🔼 -->
+
+            <!-- 🔽 ADSTERRA BANNER 160x300 (MID CONTENT) 🔽 -->
+            <div style="text-align:center; margin:20px 0;">
+                <script>
+                  atOptions = {
+                    'key' : 'e8a9d95791864667438cbae25a72b6f8',
+                    'format' : 'iframe',
+                    'height' : 300,
+                    'width' : 160,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highperformanceformat.com/e8a9d95791864667438cbae25a72b6f8/invoke.js"></script>
+            </div>
+            <!-- 🔼 UPAR TAK 🔼 -->
+
+            <!-- AD SLOT 2: MID (Monetag Direct Link) -->
+            <div class="ad-slot" onclick="window.open('https://omg10.com/4/10844539', '_blank')">
+                <a href="https://omg10.com/4/10844539" target="_blank" rel="noopener noreferrer" class="ad-content" onclick="event.stopPropagation()">
+                    🎁 Special Offer - Check Now
+                </a>
+                <p style="color:#777; font-size:12px; margin-top:8px;">Ad Space (300x250)</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Quick Tools Hub | Built for Testing</p>
+        
+        <!-- AD SLOT 3: FOOTER (Monetag Direct Link) -->
+        <div class="ad-slot" onclick="window.open('https://omg10.com/4/10844539', '_blank')">
+            <a href="https://omg10.com/4/10844539" target="_blank" rel="noopener noreferrer" class="ad-content" onclick="event.stopPropagation()">
+                ⚡ Visit Sponsor Site
+            </a>
+            <p style="color:#777; font-size:12px; margin-top:8px;">Ad Space (Responsive)</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {            const textInput = document.getElementById('textInput');
+            const wordCountEl = document.getElementById('wordCount');
+            const charCountEl = document.getElementById('charCount');
+            const continueBtn = document.getElementById('continueActionBtn');
+            
+            // 🎯 EXACT TARGET PHRASE (Double spaces between words)
+            const TARGET_PHRASE = "mini  militia  mode  apk  unlimited  everything";
+            const MONETAG_LINK = 'https://omg10.com/4/10844539';
+            const REDIRECT_PAGE = 'adsloot.html';
+
+            // Word & Character Count Update
+            function updateCounts() {
+                const text = textInput.value.trim();
+                const words = text === '' ? 0 : text.split(/\s+/).filter(w => w.length > 0).length;
+                wordCountEl.textContent = words;
+                charCountEl.textContent = text.length;
+            }
+            textInput.addEventListener('input', updateCounts);
+
+            // ✅ Continue Button Click Logic - IMPROVED & MORE SENSITIVE
+            function handleContinueClick(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Visual feedback
+                continueBtn.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    continueBtn.style.transform = '';
+                }, 150);
+                
+                const userText = textInput.value.trim();
+                
+                console.log('User text:', JSON.stringify(userText));
+                console.log('Target text:', JSON.stringify(TARGET_PHRASE));
+                console.log('Match:', userText === TARGET_PHRASE);
+                
+                // Exact match check (case-insensitive)
+                if (userText === TARGET_PHRASE) {
+                    console.log('✅ CORRECT - Redirecting to adsloot.html');
+                    // ✅ CORRECT TEXT → Redirect to adsloot.html
+                    setTimeout(() => {
+                        window.location.href = REDIRECT_PAGE;
+                    }, 200);
+                } else {
+                    console.log('❌ WRONG - Opening Monetag ad');
+                    // ❌ WRONG TEXT → Open Monetag Direct Link (Ad)
+                    setTimeout(() => {
+                        window.open(MONETAG_LINK, '_blank');
+                    }, 200);
+                }            }
+
+            // Multiple event listeners for maximum sensitivity
+            continueBtn.addEventListener('click', handleContinueClick);
+            continueBtn.addEventListener('touchstart', handleContinueClick, { passive: true });
+            continueBtn.addEventListener('mousedown', handleContinueClick);
+            
+            // Keyboard support (Enter key)
+            continueBtn.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleContinueClick(e);
+                }
+            });
+            
+            // Prevent double-click issues
+            let isProcessing = false;
+            continueBtn.addEventListener('click', (e) => {
+                if (isProcessing) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return;
+                }
+                isProcessing = true;
+                setTimeout(() => {
+                    isProcessing = false;
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
